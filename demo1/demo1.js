@@ -1,5 +1,6 @@
 // reference : https://github.com/bradtraversy/axios-crash
 //             https://www.youtube.com/watch?v=6LyagkoRWYA
+//             https://www.youtube.com/watch?v=Gl-vOU7ZU9A
 document.getElementById("get").addEventListener("click", getTodos);
 document.getElementById("post").addEventListener("click", addTodo);
 document.getElementById("update").addEventListener("click", updateTodo);
@@ -12,6 +13,7 @@ document
 
 document.getElementById("error").addEventListener("click", errHandle);
 document.getElementById("cancel").addEventListener("click", cancelToken);
+document.getElementById("async").addEventListener("click", asyncGetData);
 
 axios.defaults.headers.common["X-Auth-Token"] =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
@@ -158,6 +160,21 @@ function cancelToken() {
   if (true) {
     //   取消请求并传递取消之后的message信息（thrown.message的值）
     source.cancel("Request canceled!");
+  }
+}
+
+// 异步请求
+async function asyncGetData() {
+  try {
+    const res = await axios({
+      method: "get",
+      url: "https://jsonplaceholder.typicode.com/todos",
+      timeout: 1000 * 5,
+    });
+
+    showOutInput(res);
+  } catch (err) {
+    errHandling(err);
   }
 }
 
