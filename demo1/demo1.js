@@ -1,3 +1,5 @@
+// reference : https://github.com/bradtraversy/axios-crash
+//             https://www.youtube.com/watch?v=6LyagkoRWYA
 document.getElementById("get").addEventListener("click", getTodos);
 document.getElementById("post").addEventListener("click", addTodo);
 document.getElementById("update").addEventListener("click", updateTodo);
